@@ -12,21 +12,27 @@ const DEFAULT_STATE = {
 }
 
 class Form extends Component {
-  state = {
-    ...DEFAULT_STATE
+  constructor(props){
+    super(props)
+    this.state = {
+      ...DEFAULT_STATE
+    }
   }
 
-  handleSubmit() {
+  handleSubmit = (event) => {
     event.preventDefault()
     document.getElementById("order-form").reset()
+    console.log(this.state)
     this.props.addOrder(this.state)
-
     this.setState({
       ...DEFAULT_STATE
     })
+
+    console.log(this.state)
+
   }
 
-  handleChange() {
+  handleChange=(event) =>{
     const itemType = event.target.name
     const item = event.target.value
 
@@ -61,7 +67,13 @@ class Form extends Component {
             toppings={ this.state.toppings }
             handleOnChange={ this.handleChange }
           />
-
+        {/*
+        def toppingForm(props)
+          puts props.toppings
+          puts props.handleOnChange
+        end
+        toppingForm(toppings: this.state.toppings, handleOnChange: this.handleChange)
+      */}
           <SideForm
             sides={ this.state.sides }
             handleOnChange={ this.handleChange }
@@ -69,7 +81,8 @@ class Form extends Component {
 
           <br />
 
-          <button className="ui blue big button" type="submit">Submit</button>
+          <button className="ui blue big button" type="submit" onClick = {this.handleSubmit}
+            >Submit</button>
         </form>
       </div>
     )
