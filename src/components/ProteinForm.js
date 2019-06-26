@@ -21,7 +21,7 @@ const ProteinForm = () => {
         </div>
 
         <div className="field">
-          <div className="ui checkbox">
+          <div className="ui checkbokjhkjhx">
             <input
               id="steak"
               type="checkbox"
