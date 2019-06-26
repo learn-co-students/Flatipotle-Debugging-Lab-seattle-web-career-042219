@@ -12,21 +12,28 @@ const DEFAULT_STATE = {
 }
 
 class Form extends Component {
-  state = {
-    ...DEFAULT_STATE
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      ...DEFAULT_STATE
+    }
   }
 
-  handleSubmit() {
+
+  handleSubmit = (event) => {
+    console.log(this.state);
     event.preventDefault()
     document.getElementById("order-form").reset()
-    this.props.addOrder(this.state)
+    this.props.onAddOrder(this.state)
 
     this.setState({
       ...DEFAULT_STATE
     })
   }
 
-  handleChange() {
+  handleChange = (event) => {
+    //console.log(this)
     const itemType = event.target.name
     const item = event.target.value
 
