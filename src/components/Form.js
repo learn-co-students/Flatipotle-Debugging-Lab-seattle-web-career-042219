@@ -12,11 +12,14 @@ const DEFAULT_STATE = {
 }
 
 class Form extends Component {
-  state = {
-    ...DEFAULT_STATE
-  }
+  constructor() {
+    super()
+    this.state = {
+      ...DEFAULT_STATE
+    }
+}
 
-  handleSubmit() {
+  handleSubmit = (event) => {
     event.preventDefault()
     document.getElementById("order-form").reset()
     this.props.addOrder(this.state)
@@ -26,9 +29,11 @@ class Form extends Component {
     })
   }
 
-  handleChange() {
+  handleChange = (event) => {
     const itemType = event.target.name
+    console.log(itemType)
     const item = event.target.value
+    console.log(item)
 
     !this.state[`${itemType}`].includes(item) ?
       this.setState({
@@ -76,4 +81,4 @@ class Form extends Component {
   }
 }
 
-export default Form
+export default Form;
