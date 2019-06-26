@@ -8,4 +8,4 @@ const Side = (props) => {
   )
 }
 
-export default Side
+export default Side;
